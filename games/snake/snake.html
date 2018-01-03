@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keyword" content="suiga, 西瓜, snake, 贪吃蛇">
+  <meta name="description" content="贪吃蛇游戏">
+  <title>贪吃蛇</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+    }
+    #gameButton {
+      width: 100px;
+      outline: none;
+    }
+    .intro {
+      width: 400px;
+      margin: 10px auto;
+      text-align: left;
+    }
+  </style>
+  <script src="Snake.js"></script>
+</head>
+<body>
+  <h1>贪吃蛇游戏</h1>
+  <p class="intro">
+    方向键控制移动方向，<br>
+    每个苹果100分，每2000分level up，<br>
+    每次level up提升速度，直到level 15为止，<br>
+    之后保持速度不再增加
+  </p>
+  <div>
+    <input type="button" id="gameButton" value="START">
+  </div>
+  <canvas id="myCanvas" width="400" height="400">
+    浏览器版本不支持画布，请下载最新版浏览器
+  </canvas>
+</body>
+<script>
+  var gameBtn = document.getElementById('gameButton');
+  var cvs = document.getElementById('myCanvas');
+  var snake = new Snake([{x: 20, y: 20}, {x: 20, y: 21}, {x: 20, y: 22}], 'top');
+  snake.init(cvs);
+  var timeId = null;
+  gameBtn.onclick = function(e){
+    var val = this.value;
+    var checkGameOver = function() {
+      timeId = setInterval(function(){
+        if (snake.gameOver()) {
+          gameBtn.value = 'RESTART';
+          clearInterval(timeId);
+        }
+      }, 100);
+    }
+    if (val === 'START') {
+      snake.start();
+      this.value = 'PAUSE';
+      checkGameOver();
+    } else if (val === 'PAUSE') {
+      snake.pause();
+      this.value = 'CONTINUE';
+      clearInterval(timeId);
+    } else if (val === 'CONTINUE') {
+      snake.goOn();
+      this.value = 'PAUSE';
+      checkGameOver();
+    } else if (val === 'RESTART') {
+      snake.restart();
+      this.value = 'PAUSE';
+      checkGameOver();
+    }
+  }
+</script>
+</html>
