@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="author" content="moe suiga">
+  <meta name="keywords" content="web, 前端, CSS, CSS选择器">
+  <meta name="description" content="CSS选择器演示页面">
+  <title>CSS选择器</title>
+  <style>
+    .wrapper {
+      margin: 0 auto;
+      width: 900px;
+      position: relative;
+    }
+    .title {
+      color: black;
+      text-align: center;
+    }
+    pre {
+      position: absolute;
+      left: 0;
+      width: 350px;
+      background-color: #ccc;
+    }
+    .demo-box {
+      margin-left: 370px;
+    }
+
+    /*=======分割线=======*/
+    h2 {
+      color: #520;
+    }
+    .paragraph {
+      text-indent: 2em;
+    }
+    .paragraph.grey {
+      color: grey;
+    }
+    #green {
+      color: green;
+    }
+    .prop-box > [type] {
+      background-color: #911;
+    }
+    .prop-box > [type=reset] {
+      background-color: red;
+    }
+    .prop-box > [href^=javascript] {
+      color: #ccc;
+      text-decoration: none;
+    }
+    .pseudo-box :link {
+      color: darkgreen;
+    }
+    .pseudo-box :not(div):hover {
+      background: skyblue;
+    }
+    .pseudo-box .first-p:first-letter {
+      font-size: 2em;
+      color: deepskyblue;
+    }
+    .pseudo-box .first-p:first-line {
+      color: orange;
+    }
+    .pseudo-box ::selection {
+      color: #3e0fc7;
+      background: #b3e8df;
+    }
+    .pseudo-box :target {
+      font-size: 40px;
+      color: lime;
+    }
+    .pseudo-box .boxes li:first-of-type {
+      color: green;
+    }
+    .pseudo-box .boxes li:first-child {
+      color: blue;
+    }
+    .pseudo-box .boxes .one li:first-of-type + li {
+      font-size: 20px;
+      color: #d48;
+    }
+    .pseudo-box .boxes .two li:first-of-type ~ li {
+      font-size: 20px;
+      color: #d48;
+    }
+    .pseudo-box .boxes .three :not(input) {
+      font-size: 30px;
+    }
+    .pseudo-box .boxes :enabled {
+      color: lightgreen;
+    }
+    .pseudo-box .boxes :disabled {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 class="title">CSS选择器DEMO</h1>
+    <pre>
+      /*样式内容*/
+      h2 {
+        color: #520;
+      }
+      .paragraph {
+        text-indent: 2em;
+      }
+      .paragraph.grey {
+        color: grey;
+      }
+      #green {
+        color: green;
+      }
+      .prop-box > [type] {
+        background-color: #911;
+      }
+      .prop-box > [type=reset] {
+        background-color: red;
+      }
+      .prop-box > [href^=javascript] {
+        color: #ccc;
+        text-decoration: none;
+      }
+      .pseudo-box :link {
+        color: darkgreen;
+      }
+      .pseudo-box :not(div):hover {
+        background: skyblue;
+      }
+      .pseudo-box .first-p:first-letter {
+        font-size: 2em;
+        color: deepskyblue;
+      }
+      .pseudo-box .first-p:first-line {
+        color: orange;
+      }
+      .pseudo-box ::selection {
+        color: #3e0fc7;
+        background: #b3e8df;
+      }
+      .pseudo-box :target {
+        font-size: 40px;
+        color: lime;
+      }
+      .pseudo-box .boxes li:first-of-type {
+        color: green;
+      }
+      .pseudo-box .boxes li:first-child {
+        color: blue;
+      }
+      .pseudo-box .boxes .one li:first-of-type + li {
+        font-size: 20px;
+        color: #d48;
+      }
+      .pseudo-box .boxes .two li:first-of-type ~ li {
+        font-size: 20px;
+        color: #d48;
+      }
+      .pseudo-box .boxes .three :not(input) {
+        font-size: 30px;
+      }
+      .pseudo-box .boxes :enabled {
+        color: lightgreen;
+      }
+      .pseudo-box .boxes :disabled {
+        color: red;
+      }
+    </pre>
+    <div class="demo-box">
+      <h2>一个标题</h2>
+      <p class="paragraph">一个段落</p>
+      <p class="grey">类名为grey而没有paragraph的一个段落</p>
+      <p class="paragraph grey">灰色文字的一个段落</p>
+      <p id="green">ID为green的段落p</p>
+      <hr>
+      <div class="prop-box">
+        <button type="button">普通按钮</button>
+        <button type="reset">重置按钮</button>
+        <a href="javascript:;">空连接</a>
+        <div>
+          <button type="button">深入一层的普通按钮</button>
+        </div>
+      </div>
+      <hr>
+      <div class="pseudo-box">
+        <a href="#target">target链接</a>
+        <p class="first-p">很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容很多内容</p>
+        <div id="target">target</div>
+        <div class="boxes">
+          boxes
+          <div class="one">
+            first box
+            <ul>
+              <li>第1个li</li>
+              <li>第2个li</li>
+              <li>第3个li</li>
+            </ul>
+          </div>
+          <div class="two">
+            second box
+            <ul>
+              <p>列表中的p标签</p>
+              <li>第1个li</li>
+              <li>第2个li</li>
+              <li>第3个li</li>
+            </ul>
+          </div>
+          <div class="three">
+            third box
+            <input class="txt-input" type="text" value="启用的文本框">
+            <input disabled type="text" value="禁用的文本框">
+            <p>一些文字内容</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
