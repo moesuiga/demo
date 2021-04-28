@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极小数量级重复填充背景</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section .content {
+      display: flex;
+      flex-wrap: wrap;
+      /* margin: 16px; */
+    }
+    [class^=sample] {
+      width: 200px;
+      height: 200px;
+      margin-right: 24px;
+      margin-bottom: 24px;
+      border: 1px solid gold;
+    }
+    .sample-1 {
+      background: repeating-radial-gradient(
+        circle at 50% 50%,
+        #000,
+        #fff 1px
+      );
+    }
+    .sample-2 {
+      background: repeating-radial-gradient(
+        circle at 75% 75%,
+        #fff,
+        #d34,
+        #3a6,
+        #369 0.1px
+      );
+    }
+
+    @property --sample-length {
+      syntax: '<length>';
+      inherits: false;
+      initial-value: 0.01px;
+    }
+    .sample-3 {
+      --sample-length: 0.02px;
+      background: repeating-radial-gradient(
+        circle at 25% 25%,
+        #ff0,
+        #d46 var(--sample-length)
+      );
+    }
+    .sample-4 {
+      --sample-length: 0.0001px;
+      background: repeating-radial-gradient(
+        circle at -25% -25%,
+        #fff,
+        #ff0,
+        #d46,
+        #939 var(--sample-length)
+      );
+      /* transition: --sample-4-length 0.5s; */
+      animation: radial-transition 6s ease-in-out infinite alternate;
+    }
+    @keyframes radial-transition {
+      0% { --sample-length: 0.0001px; }
+      25% { --sample-length: 0.0006px; }
+      50% { --sample-length: 0.0003px; }
+      75% { --sample-length: 0.0004px; }
+      100% { --sample-length: 0.0002px; }
+    }
+
+    .sample-5 {
+      background: repeating-conic-gradient(
+        #fff,
+        #000 1deg
+      );
+    }
+    .sample-6 {
+      background: repeating-conic-gradient(
+        from 45deg at 75% 25%,
+        #f40,
+        #ff4,
+        #3ff,
+        #f13 0.1deg
+      );
+    }
+    .sample-7 {
+      background: repeating-conic-gradient(
+        from 0.625turn at 25% 75%,
+        #f00,
+        #f80,
+        #ff0,
+        #0f0,
+        #0ff,
+        #00f,
+        #f0f 0.07deg
+      );
+    }
+    @property --sample-angle {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0.05deg;
+    }
+    .sample-8 {
+      --sample-angle: 0.1deg;
+      background: repeating-conic-gradient(
+        from 0 at 50% 50%,
+        #f40,
+        #38d,
+        #f00 var(--sample-angle)
+      );
+      animation: conic-trans-1 8s linear infinite alternate;
+    }
+    @keyframes conic-trans-1 {
+      0% { --sample-angle: 0.1deg; }
+      8.33% { --sample-angle: 0.09deg; }
+      33.33% { --sample-angle: 0.06deg; }
+      50% { --sample-angle: 0.08deg; }
+      66.67% { --sample-angle: 0.06deg; }
+      91.67% { --sample-angle: 0.09deg; }
+      100% { --sample-angle: 0.1deg; }
+    }
+    .sample-9 {
+      --sample-angle: 0.05deg;
+      background: repeating-conic-gradient(
+        from 0 at 50% 50%,
+        #f40,
+        #3ff var(--sample-angle)
+      );
+      animation: conic-trans-2 8s linear infinite alternate;
+    }
+    @keyframes conic-trans-2 {
+      0% { --sample-angle: 0.05deg; }
+      25% { --sample-angle: 0.1deg; }
+      50% { --sample-angle: 0.005deg; }
+      75% { --sample-angle: 0.08deg; }
+      100% { --sample-angle: 0.02deg; }
+    }
+    @property --rx {
+      syntax: '<percentage>';
+      inherits: false;
+      initial-value: 100%;
+    }
+    @property --ry {
+      syntax: '<percentage>';
+      inherits: false;
+      initial-value: 100%;
+    }
+
+    @property --start {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+    .sample-10 {
+      --rx: 55%;
+      --ry: 0%;
+      --start: 0turn;
+      --sample-angle: 0.1deg;
+      background: repeating-conic-gradient(
+        from var(--start) at var(--rx) var(--ry),
+        #f00,
+        #f80,
+        #ff0,
+        #f0f var(--sample-angle)
+      );
+      /* background: repeating-conic-gradient(
+        from var(--start) at var(--rx) var(--ry),
+        #f00,
+        #f80,
+        #ff0,
+        #0f0,
+        #0ff,
+        #00f,
+        #f0f var(--sample-angle)
+      ); */
+      animation: conic-trans-3 10s linear infinite;
+    }
+    @keyframes conic-trans-3 {
+      0% { --rx: 50%; --ry: 0%; --start: 0turn; --sample-angle: 0.1deg; }
+      12.5% { --rx: 85.35%; --ry: 14.65%; --start: 0.125turn; --sample-angle: 0.125deg; }
+      25% { --rx: 100%; --ry: 50%; --start: 0.25turn; --sample-angle: 0.15deg; }
+      37.5% { --rx: 85.35%; --ry: 85.35%; --start: 0.375turn; --sample-angle: 0.175deg; }
+      50% { --rx: 50%; --ry: 100%; --start: 0.5turn; --sample-angle: 0.2deg; }
+      62.5% { --rx: 14.65%; --ry: 85.35%; --start: 0.375turn; --sample-angle: 0.175deg; }
+      75% { --rx: 0%; --ry: 50%; --start: 0.25turn; --sample-angle: 0.15deg; }
+      87.5% { --rx: 14.65%; --ry: 14.65%; --start: 0.125turn; --sample-angle: 0.125deg; }
+      100% { --rx: 50%; --ry: 0%; --start: 0turn; --sample-angle: 0.1deg; }
+      /* 25% { --start: 0.25turn; --sample-angle: 0.1deg; }
+      50% { --start: 0.5turn; --sample-angle: 0.15deg; }
+      75% { --start: 0.75turn; --sample-angle: 0.2deg; }
+      100% { --rx: 75%; --ry: 25%; --start: 1turn; --sample-angle: 0.25deg; } */
+    }
+  </style>
+</head>
+<body>
+  <h1>极小数量级重复填充背景的神奇效果</h1>
+  <p>灵感来源： <a href="https://mp.weixin.qq.com/s/QayPWB9DCn6XvcOMDWpAFw">iCSS前端趣闻 - CSS 还能这样玩？奇思妙想渐变的艺术</a></p>
+  <p>CSS使用了部分较新的功能：如重复角向渐变（<code>repeating-conic-gradient</code>）、自定义属性声明（<code>@property</code>）、自定义属性动画等，部分浏览器可能不支持，为了更好的效果，建议使用最新版Chrome浏览器查看。</p>
+  <main class="main">
+    <section class="section">
+      <h2>repeating-radial-gradient 重复径向渐变</h2>
+      <div class="content">
+        <div class="sample-1"></div>
+        <div class="sample-2"></div>
+        <div class="sample-3"></div>
+        <div class="sample-4"></div>
+      </div>
+    </section>
+    <section class="section">
+      <h2>repeating-conic-gradient 重复角向渐变</h2>
+      <div class="content">
+        <div class="sample-5"></div>
+        <div class="sample-6"></div>
+        <div class="sample-7"></div>
+        <div class="sample-8"></div>
+        <div class="sample-9"></div>
+        <div class="sample-10"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
